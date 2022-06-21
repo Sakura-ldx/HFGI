@@ -148,7 +148,7 @@ if __name__ == "__main__":
     parser.add_argument("--n_sample", type=int, default=None, help="number of the samples to infer.")
     parser.add_argument("--edit_attribute", type=str, default='smile', help="The desired attribute")
     parser.add_argument("--edit_degree", type=float, default=0, help="edit degreee")
-    parser.add_argument("ckpt", metavar="CHECKPOINT", help="path to generator checkpoint")
+    parser.add_argument("--ckpt", metavar="CHECKPOINT", help="path to generator checkpoint")
 
     args = parser.parse_args()
     main(args)
