@@ -4,7 +4,7 @@ matplotlib.use('Agg')
 import torch
 from torch import nn
 from models.encoders import psp_encoders
-from models.stylegan2.model import Generator #, Discriminator
+from models.stylegan2.model import Generator    #, Discriminator
 from configs.paths_config import model_paths
 import torchvision.transforms as transforms
 
@@ -23,12 +23,12 @@ class pSp(nn.Module):
         self.opts = opts
         # Define architecture
         self.encoder = self.set_encoder()
-        self.residue =  psp_encoders.ResidualEncoder() #Ec
+        self.residue = psp_encoders.ResidualEncoder()   # Ec
         self.decoder = Generator(opts.stylegan_size, 512, 8, channel_multiplier=2)
         self.face_pool = torch.nn.AdaptiveAvgPool2d((256, 256))
         self.grid_transform = transforms.RandomPerspective(distortion_scale=opts.distortion_scale, p=opts.aug_rate)
-        self.grid_align = psp_encoders.ResidualAligner() #ADA
-        #self.discriminator = Discriminator(1024)
+        self.grid_align = psp_encoders.ResidualAligner()    # ADA
+        # self.discriminator = Discriminator(1024)
         self.load_weights()
 
     def set_encoder(self):

@@ -2,6 +2,7 @@ import torch
 import argparse
 from models.psp import pSp
 
+
 def setup_model(checkpoint_path, device='cuda'):
     ckpt = torch.load(checkpoint_path, map_location='cpu')
     opts = ckpt['opts']

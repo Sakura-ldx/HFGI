@@ -136,12 +136,9 @@ class Encoder4Editing(Module):
         self.latlayer1 = nn.Conv2d(256, 512, kernel_size=1, stride=1, padding=0)
         self.latlayer2 = nn.Conv2d(128, 512, kernel_size=1, stride=1, padding=0)
 
-
     def get_deltas_starting_dimensions(self):
         ''' Get a list of the initial dimension of every delta from which it is applied '''
         return list(range(self.style_count))  # Each dimension has a delta applied to it
-
-
 
     def forward(self, x):
         x = self.input_layer(x)
@@ -192,15 +189,11 @@ class ResidualEncoder(Module):
         self.condition_shift3 = nn.Sequential(
                     EqualConv2d(64, 512, 3, stride=1, padding=1, bias=True ),
                     ScaledLeakyReLU(0.2),
-                    EqualConv2d(512, 512, 3, stride=1, padding=1, bias=True ))  
-
-
+                    EqualConv2d(512, 512, 3, stride=1, padding=1, bias=True ))
 
     def get_deltas_starting_dimensions(self):
         ''' Get a list of the initial dimension of every delta from which it is applied '''
         return list(range(self.style_count))  # Each dimension has a delta applied to it
-
-
 
     def forward(self, x):
         conditions = []
